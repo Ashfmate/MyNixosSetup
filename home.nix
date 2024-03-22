@@ -66,6 +66,16 @@
     enable = true;
     userName = "Ashmate";
     userEmail = "Ashforestunknown@gmail.com";
+    extraConfig = {
+      credential.helper = "${
+          pkgs.git.override { withLibsecret = true; }
+        }/bin/git-credential-libsecret";
+      push = { autoSetupRemote = true; };
+    };
+  };
+
+  programs.gh = {
+    enable = true;
   };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
