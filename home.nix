@@ -6,6 +6,10 @@
   home.username = "ashforest";
   home.homeDirectory = "/home/ashforest";
 
+   imports = [
+     ./Modules/fish.nix
+   ];
+
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.
@@ -18,9 +22,6 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    # pkgs.hello
 
     # Font settings
     (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
@@ -50,17 +51,6 @@
     "gtk-4.0/gtk-dark.css".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/gtk-dark.css";
   };
 
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-    autosuggestion.enable = true;
-    syntaxHighlighting.enable = true;
-
-    oh-my-zsh = {
-      enable = true;
-      plugins = [ "git" "fzf" "rust" "golang" "node" "npm" ];
-    };
-  };
   
   programs.git = {
     enable = true;
